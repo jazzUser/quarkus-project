@@ -47,5 +47,13 @@ class ParticipantResource(var participantService: ParticipantService) {
     fun findByCategory(@PathParam("username") username:String): Response {
         val usernames  =  participantService.getParticipantByUserName(username)
         return Response.ok(usernames).build()
+
+    }
+
+    @PUT
+    @Path("edit/{participantId}")
+    fun updateParticipant(@PathParam("participantId") participantId: Long, participantToUpdate: Participant): Response {
+        val newParticipant: Participant = participantService.editParticipantById(participantId, participantToUpdate)
+        return Response.ok(newParticipant).build()
     }
 }

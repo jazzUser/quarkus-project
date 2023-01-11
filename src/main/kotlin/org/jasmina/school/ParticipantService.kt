@@ -46,4 +46,10 @@ class ParticipantService(private var participantsRepository: ParticipantsReposit
         return username
     }
 
+    fun editParticipantById(participantId: Long, participantToUpdate: Participant): Participant {
+        val oldParticipant: Participant = this.participantsRepository.findById(participantId)
+        oldParticipant.participantsId.also { participantToUpdate.participantsId = it }
+        return participantToUpdate
+    }
+
 }
