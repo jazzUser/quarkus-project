@@ -13,8 +13,8 @@ class ParticipantResource(var participantService: ParticipantService) {
 
     @GET
     fun getAllParticipants(): Response {
-        val participant = participantService.getAllParticipants()
-        return Response.ok(participant).status(Response.Status.CREATED).build()
+        val participants = participantService.getAllParticipants()
+        return Response.ok(participants).status(Response.Status.CREATED).build()
     }
     @POST
     @Path("/add")
@@ -31,14 +31,21 @@ class ParticipantResource(var participantService: ParticipantService) {
         @PathParam("participantId") participantId: Long,
         @PathParam("trainingId") trainingId: Long,
     ): Response {
-        participantService.addParticipantToTraining(participantId, trainingId)
+        participantService.enrollParticipantToTraining(participantId, trainingId)
         return Response.ok().status(200).build()
     }
 
+   @GET
+   @Path("{participantId}")
+    fun findParticipantById(@PathParam("participantId") participantId: Long): Response {
+       val participantsId = participantService.findParticipantById(participantId)
+       return Response.ok(participantsId).build()
+   }
+
     @GET
-    @Path("{participantId}")
-    fun findParticipantById(@PathParam("participantId") participantId: Long): Response{
-        val participantsId = participantService.findParticipantById(participantId)
-        return Response.ok(participantsId).build()
+    @Path("/username/{username}")
+    fun findByCategory(@PathParam("username") username:String): Response {
+        val usernames  =  participantService.getParticipantByUserName(username)
+        return Response.ok(usernames).build()
     }
 }

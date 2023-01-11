@@ -14,7 +14,7 @@ class ParticipantService(private var participantsRepository: ParticipantsReposit
         return participant
     }
 
-    fun addParticipantToTraining(participantId: Long, trainingId: Long, ) {
+    fun enrollParticipantToTraining(participantId: Long, trainingId: Long) {
 
         val participant = participantsRepository.findById(participantId)
         val training = trainingRepository.findById(trainingId)
@@ -27,13 +27,23 @@ class ParticipantService(private var participantsRepository: ParticipantsReposit
         }
     }
 
-    fun findParticipantById(participantId: Long): Participant {
-        var participant = participantsRepository.findById(participantId)
+   fun findParticipantById(participantId: Long): Participant {
+        val participant = participantsRepository.findById(participantId)
         if (participant != null){
             return participant
         }else{
             throw IllegalArgumentException("There is no participant with the ID $participantId")
         }
+   }
+
+    fun getParticipantByUserName(userName:String) : List<Participant> {
+
+        val username =participantsRepository.getParticipantByUserName(userName)
+
+        if(username == emptyList<Participant>()){
+            throw  IllegalArgumentException("There is no User with Username $userName")
+        }
+        return username
     }
 
 }
