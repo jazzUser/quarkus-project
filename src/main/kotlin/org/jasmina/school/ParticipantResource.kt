@@ -13,7 +13,7 @@ class ParticipantResource(var participantService: ParticipantService) {
 
     @GET
     fun getAllParticipants(): Response {
-        var participant = participantService.getAllParticipants()
+        val participant = participantService.getAllParticipants()
         return Response.ok(participant).status(Response.Status.CREATED).build()
     }
     @POST
@@ -28,10 +28,17 @@ class ParticipantResource(var participantService: ParticipantService) {
     @PUT
     @Transactional
     fun enrollParticipantToTraining(
-        @PathParam("trainingId") participantId: Long,
-        @PathParam("participantId") trainingId: Long,
+        @PathParam("participantId") participantId: Long,
+        @PathParam("trainingId") trainingId: Long,
     ): Response {
         participantService.addParticipantToTraining(participantId, trainingId)
         return Response.ok().status(200).build()
+    }
+
+    @GET
+    @Path("{participantId}")
+    fun findParticipantById(@PathParam("participantId") participantId: Long): Response{
+        val participantsId = participantService.findParticipantById(participantId)
+        return Response.ok(participantsId).build()
     }
 }

@@ -14,16 +14,26 @@ class ParticipantService(private var participantsRepository: ParticipantsReposit
         return participant
     }
 
-    fun addParticipantToTraining(trainingId: Long, participantId: Long) {
+    fun addParticipantToTraining(participantId: Long, trainingId: Long, ) {
 
-        var participant = participantsRepository.findById(participantId)
-        var training = trainingRepository.findById(trainingId)
+        val participant = participantsRepository.findById(participantId)
+        val training = trainingRepository.findById(trainingId)
 
         if (training != null && participant!= null) {
-            var trainings = participant.trainings
+            val trainings = participant.trainings
             trainings.add(training)
             participant.trainings = trainings
             participantsRepository.persist(participant)
         }
     }
+
+    fun findParticipantById(participantId: Long): Participant {
+        var participant = participantsRepository.findById(participantId)
+        if (participant != null){
+            return participant
+        }else{
+            throw IllegalArgumentException("There is no participant with the ID $participantId")
+        }
+    }
+
 }
