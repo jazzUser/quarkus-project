@@ -36,20 +36,17 @@ class ParticipantService(private var participantsRepository: ParticipantsReposit
         }
    }
 
-    fun getParticipantByUserName(userName:String) : List<Participant> {
-
+    fun getParticipantByUserName(userName:String): List<Participant> {
         val username =participantsRepository.getParticipantByUserName(userName)
-
         if(username == emptyList<Participant>()){
             throw  IllegalArgumentException("There is no User with Username $userName")
         }
         return username
     }
 
-    fun editParticipantById(participantId: Long, participantToUpdate: Participant): Participant {
-        val oldParticipant: Participant = this.participantsRepository.findById(participantId)
-        oldParticipant.participantsId.also { participantToUpdate.participantsId = it }
-        return participantToUpdate
-    }
-
+   fun editParticipantById(participantsId: Long, participantToUpdate: Participant) {
+       participantToUpdate.participantsId
+       participantsRepository.persist(participantToUpdate)
+   }
 }
+

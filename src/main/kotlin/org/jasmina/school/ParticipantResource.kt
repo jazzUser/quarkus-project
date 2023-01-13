@@ -50,10 +50,11 @@ class ParticipantResource(var participantService: ParticipantService) {
 
     }
 
+//needs improvement
     @PUT
     @Path("edit/{participantId}")
-    fun updateParticipant(@PathParam("participantId") participantId: Long, participantToUpdate: Participant): Response {
-        val newParticipant: Participant = participantService.editParticipantById(participantId, participantToUpdate)
-        return Response.ok(newParticipant).build()
+    @Transactional
+    fun updateParticipant(@PathParam("participantId") participantId: Long, participantToUpdate: Participant) {
+    participantService.editParticipantById(participantId, participantToUpdate)
     }
 }
