@@ -45,8 +45,13 @@ class ParticipantService(private var participantsRepository: ParticipantsReposit
     }
 
    fun editParticipantById(participantsId: Long, participantToUpdate: Participant) {
-       participantToUpdate.participantsId
-       participantsRepository.persist(participantToUpdate)
+       val participant = participantsRepository.findById(participantsId)
+       participant.participantsId = participantToUpdate.participantsId
+       participant.userName = participantToUpdate.userName
+       participant.firstName = participantToUpdate.firstName
+       participant.lastName = participantToUpdate.lastName
+       participant.trainings = participantToUpdate.trainings
+       participantsRepository.persist(participant)
    }
 }
 

@@ -54,7 +54,8 @@ class ParticipantResource(var participantService: ParticipantService) {
     @PUT
     @Path("edit/{participantId}")
     @Transactional
-    fun updateParticipant(@PathParam("participantId") participantId: Long, participantToUpdate: Participant) {
+    fun updateParticipant(@PathParam("participantId") participantId: Long, participantToUpdate: Participant): Response {
     participantService.editParticipantById(participantId, participantToUpdate)
+    return Response.ok().status(200).build()
     }
 }
