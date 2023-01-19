@@ -1,13 +1,18 @@
-
 version: '3'
-
 services:
-  database:
-    image: 'postgres:14.4-alpine'
+  quarkus:
+    image: quay.io/quarkus/ubi-quarkus-native-s2i:20.2.0-java11
     ports:
-      - 5432:5432
-
+      - "8080:8080"
     environment:
-      POSTGRES_USER: postgres # The PostgreSQL user (useful to connect to the database)
-      POSTGRES_PASSWORD: postgres # The PostgreSQL password (useful to connect to the database)
-      POSTGRES_DB: trainings # The PostgreSQL default database (automatically created at first launch)
+      - QUARKUS_DATASOURCE_URL=jdbc:postgresql://database:5432/trainings
+      - QUARKUS_DATASOURCE_USERNAME=user
+      - QUARKUS_DATASOURCE_PASSWORD=password
+  database:
+    image: postgres:14.4-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: trainings

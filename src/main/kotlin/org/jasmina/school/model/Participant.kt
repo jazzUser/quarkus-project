@@ -1,6 +1,4 @@
-package org.jasmina.school
-
-import com.fasterxml.jackson.annotation.JsonIgnore
+package org.jasmina.school.model
 import javax.persistence.*
 
 @Entity

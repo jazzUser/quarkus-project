@@ -1,5 +1,7 @@
-package org.jasmina.school
+package org.jasmina.school.service
 
+import org.jasmina.school.model.Training
+import org.jasmina.school.persistence.TrainingRepository
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped

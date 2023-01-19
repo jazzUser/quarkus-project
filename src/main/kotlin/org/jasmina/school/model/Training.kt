@@ -1,4 +1,4 @@
-package org.jasmina.school
+package org.jasmina.school.model
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
