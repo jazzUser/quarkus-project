@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "9d9017b9-4466-4c21-87c8-274f1013e0d0",
+		"name": "school-training-jasmina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25249591"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/participants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/participants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"participants"
+					]
+				},
+				"description": "getallparticipants"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/participants/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"testuser\",\r\n    \"firstName\": \"firstName\",\r\n    \"lastName\": \"lastName\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/participants/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"participants",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/trainings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/trainings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trainings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/enroll/{participantId}/{trainingId}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/participants/enroll/1/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"participants",
+						"enroll",
+						"1",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/enroll/{participantId}/{trainingId}",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trainings/enroll/11/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trainings",
+								"enroll",
+								"11",
+								"12"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "content-length",
+							"value": "772"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"participantsId\": 3,\n    \"userName\": \"testUser2\",\n    \"firstName\": \"Karolina\",\n    \"lastName\": \"Schmidt\",\n    \"email\": \"karolina@email.com\",\n    \"telephone\": \"0049850391\",\n    \"businessArea\": \"Finance\",\n    \"department\": \"München\",\n    \"trainings\": [\n        {\n            \"trainingId\": 8,\n            \"title\": \"Frontend with Vue.js\",\n            \"category\": \"Software Development\",\n            \"description\": \"First steps when working with Vue.js\",\n            \"targetGroup\": \"Beginners\",\n            \"trainingContent\": \"Building your first application with Vue.js\",\n            \"type\": \"open\",\n            \"start_date\": \"2022-07-27\",\n            \"duration\": \"2h\",\n            \"maxParticipants\": 17\n        },\n        {\n            \"trainingId\": 11,\n            \"title\": \"Cloud Security\",\n            \"category\": \"Software Development\",\n            \"description\": \"IT-Security\",\n            \"targetGroup\": \"Beginners\",\n            \"trainingContent\": \"Best practices for better Security\",\n            \"type\": \"closed\",\n            \"start_date\": \"2007-12-03\",\n            \"duration\": \"1.5h\",\n            \"maxParticipants\": 1\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/trainings/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"training 3.0\",\n    \"category\":\"Software Development\",\n    \"description\": \"IT-Security\",\n    \"targetGroup\": \"Beginners\",\n    \"trainingContent\": \"How to make an application safe\",\n    \"type\": \"open\",\n    \"start_date\": \"2007-12-03\",\n    \"duration\": \"1.5h\",\n    \"maxParticipants\": 15\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/trainings/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trainings",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/participants/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/participants/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"participants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/api/participants/username/test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/participants/username/testuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"participants",
+						"username",
+						"testuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/edit/{participantId}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"participantsId\": 1,\r\n        \"userName\": \"updatedUserName\",\r\n        \"firstName\": \"updatedFirstName\",\r\n        \"lastName\": \"updatedLastName\",\r\n        \"trainings\": []\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/participants/edit/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"participants",
+						"edit",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
